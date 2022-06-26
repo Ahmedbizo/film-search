@@ -98,7 +98,7 @@ function ListEpisode() {
                     key={item.episode_id}
                     onClick={() => fetchOneEpisode(item)}
                   >
-                    <td>EPISODE{item.episode_id}</td>
+                    <td>EPISODE  {item.episode_id}</td>
                     <td>{item.title}</td>
                     <td>{item.release_date}</td>
                   </tr>
@@ -129,7 +129,7 @@ function ListEpisode() {
             >
               <Card.Header>Movie Details</Card.Header>
               <Card.Body>
-                <Card.Text>No Matches Selected</Card.Text>
+                <Card.Text>No Movies Selected</Card.Text>
               </Card.Body>
             </Card>
           )}
