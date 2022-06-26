@@ -86,9 +86,9 @@ function ListEpisode() {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>episode id</th>
-                <th>title</th>
-                <th>release date</th>
+                <th>Episode ID</th>
+                <th>Title</th>
+                <th>Release Date</th>
               </tr>
             </thead>
             <tbody>
