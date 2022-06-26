@@ -16,7 +16,6 @@ function ListEpisode() {
     const resp = await data.json();
     setData(resp.results);
     setFreezData(resp.results);
-    console.log(resp)
   };
 
 
