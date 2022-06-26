@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 function ListEpisode() {
   const [data, setData] = useState([]);
   const [freezData, setFreezData] = useState([]);
+  const [episode, setEpisode] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -17,7 +18,10 @@ function ListEpisode() {
     setData(resp.results);
     setFreezData(resp.results);
   };
-
+  const fetchOneEpisode = async (item) => {
+    setIsSelected(true);
+    setEpisode(item);
+  };
 
 
   return (
