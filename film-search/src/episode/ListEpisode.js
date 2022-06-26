@@ -1,8 +1,6 @@
 import { Container, Card, Row, Col, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-
-
 function ListEpisode() {
   const [data, setData] = useState([]);
   const [freezData, setFreezData] = useState([]);
@@ -16,16 +14,18 @@ function ListEpisode() {
   }, []);
 
   const fetchData = async () => {
-    const url = `https://swapi.dev/api/films`;
+    const url = `https://swapi.dev/api/films/?format=json`;
     const data = await fetch(url);
     const resp = await data.json();
     setData(resp.results);
     setFreezData(resp.results);
   };
+
   const fetchOneEpisode = async (item) => {
     setIsSelected(true);
     setEpisode(item);
   };
+
   const handleNameChange = (e) => {
     if (searchName === "") {
       setData(freezData);
@@ -38,6 +38,7 @@ function ListEpisode() {
       setData(newData);
     }
   };
+
   const handleSort = (e) => {
     let newData;
     if (e.target.value === "ep_id") {
@@ -50,15 +51,15 @@ function ListEpisode() {
     setData(newData);
   };
 
-
   return (
     <Container fluid>
       <Row style={{ marginTop: "100px", marginBottom: "40px" }}>
         <Col xl={2} sm={2}>
           <Form.Select
             aria-label="Default select example"
+            value={sort}
             onChange={(e) => {
-              setSort(e.target.value);
+              setSort(e.target.value)
               handleSort(e);
               setIsSelected(false);
             }}
@@ -97,12 +98,12 @@ function ListEpisode() {
                     key={item.episode_id}
                     onClick={() => fetchOneEpisode(item)}
                   >
-                    <td>EPISODE {item.episode_id}</td>
+                    <td>EPISODE{item.episode_id}</td>
                     <td>{item.title}</td>
                     <td>{item.release_date}</td>
                   </tr>
                 );
-              }) : (<tr><td colSpan={3} align={'center'}>No Matches Selected</td></tr>)}
+              }) : (<tr><td colSpan={3} align={'center'}>No Matches Result</td></tr>)}
             </tbody>
           </Table>
         </Col>
@@ -128,7 +129,7 @@ function ListEpisode() {
             >
               <Card.Header>Movie Details</Card.Header>
               <Card.Body>
-                <Card.Text>No Movies Selected</Card.Text>
+                <Card.Text>No Matches Selected</Card.Text>
               </Card.Body>
             </Card>
           )}
