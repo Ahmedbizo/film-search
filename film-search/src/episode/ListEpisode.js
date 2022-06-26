@@ -6,6 +6,9 @@ function ListEpisode() {
   const [data, setData] = useState([]);
   const [freezData, setFreezData] = useState([]);
   const [episode, setEpisode] = useState(null);
+  const [sort, setSort] = useState("date");
+  const [searchName, setSearchName] = useState("");
+  const [isSelected, setIsSelected] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -33,6 +36,17 @@ function ListEpisode() {
       });
       setData(newData);
     }
+  };
+  const handleSort = (e) => {
+    let newData;
+    if (e.target.value === "ep_id") {
+      newData = freezData.sort((a, b) => a.episode_id - b.episode_id);
+    } else {
+      newData = freezData.sort(
+        (a, b) => new Date(a.release_date) - new Date(b.release_date)
+      );
+    }
+    setData(newData);
   };
 
 
