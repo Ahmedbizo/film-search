@@ -22,6 +22,18 @@ function ListEpisode() {
     setIsSelected(true);
     setEpisode(item);
   };
+  const handleNameChange = (e) => {
+    if (searchName === "") {
+      setData(freezData);
+    } else {
+      const newData = freezData.filter((item) => {
+        return item.title.toLowerCase().includes(e.target.value.toLowerCase())
+          ? item
+          : null;
+      });
+      setData(newData);
+    }
+  };
 
 
   return (
